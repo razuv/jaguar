@@ -9,3 +9,5 @@
 - НИУ ВШЭ: original logo image from the supplied portfolio, slide 2.
 
 Original vector paths retained. No generated or retyped logos.
+
+- Burger King Russia (replacement, full color): https://static.tildacdn.com/tild6262-3165-4431-a431-616235626239/BK_LOGO_RGB.png — https://kleiber.ru/newburgerking, the studio responsible for Russian localization.

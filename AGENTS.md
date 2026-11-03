@@ -9,4 +9,6 @@
 - Do not fill the site with screenshots; turn their information into text and figures. Do not reintroduce the rejected meme collage (ashes, flirt post), corporate fit essay, or long repeated biography. Keep client projects and a compact agency-experience/contact section.
 - Leave visual testing to the user unless they explicitly request otherwise. Run code and content checks and publish changes through the existing Sites project.
 
-- Do not display engagement rate / 1.3%. Give visible proof controls for prominent figures, using unaltered source screenshots in dialogs. Main content stays free of screenshot walls. Known brands must use authentic logos. Experience copy should connect large-agency work with Liza’s desire to create for a distinctive brand, currently Burger King.
+- Do not display engagement rate / 1.3%. Put evidence directly into the relevant content block using complete, uncut original screenshots. No cropped screenshots, proof dialogs, or “Посмотреть пруф” buttons. Keep the analytics screenshot containing ER out of the interface. Known brands must use authentic logos. Experience copy should connect large-agency work with Liza’s desire to create for a distinctive brand, currently Burger King.
+
+- Reviews must use real quotes from the supplied portfolio; do not invent names, job titles or client affiliations. The last section must say “Всё ещё не готовы меня взять?” and include the user-supplied kitten meme and contact actions.
