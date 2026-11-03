@@ -10,10 +10,6 @@ const cases = {
   cycling: {title: 'Велозаезд вместе с «Пятёрочкой»', tag: 'ПЯТЁРОЧКА × ВЕЛОКЛУБ / СФЕРА X5', role: 'Я придумала идею коллаборации «Пятёрочки» с велоклубом для мероприятий «Сферы X5».', text: 'В анонсе коллаборации с ikigai cycling club предложен social coffee ride с маршрутом от «Пятёрочки» на Полянке до «Сферы X5». В портфолио сохранился этот анонс.', result: '', link: 'https://t.me/sfera_x5/587', linkText: 'Смотреть анонс'},
   tiktok: {title: 'TikTok-маска про предпраздничную суету', tag: 'ТЕЛЕКОМ / TIKTOK-МАСКА', role: 'Я придумывала идеи TikTok-маски для телеком-бренда и участвовала в работе над итоговым вариантом вместе с клиентом.', text: 'Первую идею с прыгающим гномом я предложила для поддержки услуги «Перенос тарифа». Вместе с клиентом мы выбрали и реализовали другой вариант — маску про отлетевшую перед праздниками кукуху.', result: '', link: 'https://vt.tiktok.com/ZS9dBaVQfbwUm-ORC8W/', linkText: 'Открыть в TikTok'}
 };
-const metrics = [['324,9К', 'показов'], ['4,5К', 'взаимодействий'], ['1,3%', 'вовлечённость'], ['3,5К', 'лайков'], ['612', 'посещений профиля'], ['117', 'ответов'], ['37', 'репостов'], ['187', 'закладок'], ['39', 'отправок']];
-const evidence = {
- analytics: `<h2>Результаты моего аккаунта в X</h2><div class="analytics-grid">${metrics.map(([value, label]) => `<div class="analytics-item"><strong>${value}</strong><span>${label}</span></div>`).join('')}</div><h2>Два ролика с миллионом просмотров</h2><p>Два моих ролика набрали по миллиону просмотров.</p>${sourceLink}`
-};
 let opener;
 function openDetail(html, label, trigger) {
  opener = trigger;
@@ -27,10 +23,6 @@ document.querySelectorAll('[data-case]').forEach(button => button.addEventListen
  const item = cases[button.dataset.case];
  if (!item) return;
  openDetail(`<h2>${item.title}</h2>${button.dataset.case === "x5" ? '<div class="detail-metric">1000+</div><p>комментариев с фотографиями питомцев</p>' : ""}<p class="role">${item.role}</p><p>${item.text}</p>${item.result ? `<p>${item.result}</p>` : ""}<a class="button dark" href="${item.link}" target="_blank" rel="noopener">${item.linkText} <svg class="icon" aria-hidden="true"><use href="#hi-arrow-up-right-01"></use></svg></a><div class="dialog-source">${sourceLink}</div>`, item.tag, button);
-}));
-document.querySelectorAll('[data-evidence]').forEach(button => button.addEventListener('click', () => {
- const content = evidence[button.dataset.evidence];
- if (content) openDetail(content, 'ЛИЧНЫЙ БЛОГ / РЕЗУЛЬТАТЫ', button);
 }));
 closeButton.addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => {
