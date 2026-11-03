@@ -10,6 +10,13 @@ const cases = {
   cycling: {title: 'Велозаезд вместе с «Пятёрочкой»', tag: 'ПЯТЁРОЧКА × ВЕЛОКЛУБ / СФЕРА X5', role: 'Я придумала идею коллаборации «Пятёрочки» с велоклубом для мероприятий «Сферы X5».', text: 'В анонсе коллаборации с ikigai cycling club предложен social coffee ride с маршрутом от «Пятёрочки» на Полянке до «Сферы X5». В портфолио сохранился этот анонс.', result: '', link: 'https://t.me/sfera_x5/587', linkText: 'Смотреть анонс'},
   tiktok: {title: 'TikTok-маска про предпраздничную суету', tag: 'ТЕЛЕКОМ / TIKTOK-МАСКА', role: 'Я придумывала идеи TikTok-маски для телеком-бренда и участвовала в работе над итоговым вариантом вместе с клиентом.', text: 'Первую идею с прыгающим гномом я предложила для поддержки услуги «Перенос тарифа». Вместе с клиентом мы выбрали и реализовали другой вариант — маску про отлетевшую перед праздниками кукуху.', result: '', link: 'https://vt.tiktok.com/ZS9dBaVQfbwUm-ORC8W/', linkText: 'Открыть в TikTok'}
 };
+const proofIcon = '<svg class="icon" aria-hidden="true"><use href="#hi-arrow-up-right-01"></use></svg>';
+const proofCrop = (source, box, width, height, label, css = '') => `<svg class="proof-image ${css}" viewBox="${box}" role="img" aria-label="${label}"><image href="assets/proofs/${source}" x="0" y="0" width="${width}" height="${height}"></image></svg>`;
+const proofs = {
+ x5: `<h2>1000+ комментариев</h2>${proofCrop('x5-publication.png', '1000 650 510 370', 2048, 1280, 'Публикация о боте X5: 1000+ комментариев с фотографиями питомцев', 'proof-x5')}<div class="proof-actions"><a class="text-link" href="assets/proofs/x5-publication.png" target="_blank" rel="noopener">Открыть оригинал ${proofIcon}</a><a class="text-link" href="https://t.me/pocrutim" target="_blank" rel="noopener">«Давай ещё покрутим» ${proofIcon}</a></div>`,
+ analytics: `<h2>Показы и взаимодействия в X</h2><div class="analytics-proofs">${proofCrop('x-analytics.jpeg', '0 318 230 113', 1280, 638, 'Статистика X: 324,9 тысячи показов')}${proofCrop('x-analytics.jpeg', '498 318 232 113', 1280, 638, 'Статистика X: 4,5 тысячи взаимодействий')}</div>`,
+ videos: `<h2>Два ролика по миллиону просмотров</h2><div class="video-proofs"><img src="assets/proofs/video-million-1.png" alt="Первый ролик Лизы: 1 млн просмотров"><img src="assets/proofs/video-million-2.png" alt="Второй ролик Лизы: 1 млн просмотров"></div>${sourceLink}`
+};
 let opener;
 function openDetail(html, label, trigger) {
  opener = trigger;
@@ -22,9 +29,22 @@ function openDetail(html, label, trigger) {
 document.querySelectorAll('[data-case]').forEach(button => button.addEventListener('click', () => {
  const item = cases[button.dataset.case];
  if (!item) return;
- openDetail(`<h2>${item.title}</h2>${button.dataset.case === "x5" ? '<div class="detail-metric">1000+</div><p>комментариев с фотографиями питомцев</p>' : ""}<p class="role">${item.role}</p><p>${item.text}</p>${item.result ? `<p>${item.result}</p>` : ""}<a class="button dark" href="${item.link}" target="_blank" rel="noopener">${item.linkText} <svg class="icon" aria-hidden="true"><use href="#hi-arrow-up-right-01"></use></svg></a><div class="dialog-source">${sourceLink}</div>`, item.tag, button);
+ openDetail(`<h2>${item.title}</h2>${button.dataset.case === "x5" ? '<div class="detail-metric">1000+</div><p>комментариев с фотографиями питомцев</p>' : ""}<p class="role">${item.role}</p><p>${item.text}</p>${button.dataset.case === "x5" ? `<button class="proof-link" data-dialog-proof="x5">Посмотреть пруф ${proofIcon}</button>` : ""}${item.result ? `<p>${item.result}</p>` : ""}<a class="button dark" href="${item.link}" target="_blank" rel="noopener">${item.linkText} <svg class="icon" aria-hidden="true"><use href="#hi-arrow-up-right-01"></use></svg></a><div class="dialog-source">${sourceLink}</div>`, item.tag, button);
 }));
-closeButton.addEventListener('click', () => dialog.close());
+document.querySelectorAll('[data-proof]').forEach(button => button.addEventListener('click', () => {
+ const content = proofs[button.dataset.proof];
+ if (content) openDetail(content, 'ПРУФ', button);
+}));
+body.addEventListener('click', event => {
+ const button = event.target.closest('[data-dialog-proof]');
+ const content = button && proofs[button.dataset.dialogProof];
+ if (!content) return;
+ body.innerHTML = content;
+ document.querySelector('#dialog-label').textContent = 'ПРУФ';
+ dialog.scrollTop = 0;
+ closeButton.focus();
+});
+closeButton.addEventListener('click' , () => dialog.close());
 dialog.addEventListener('click', event => {
  if (event.target !== dialog) return;
  const rect = dialog.getBoundingClientRect();
