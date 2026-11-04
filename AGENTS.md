@@ -25,3 +25,7 @@
 - Previous local project notes and the inactive Sites manifest are archived in .local/migration/ and ignored by Git. They are not active configuration.
 
 - GitHub repository: https://github.com/razuv/jaguar.git (`origin`). The user approved the initial commit, push and GitHub Pages publication on 2026-11-04. Subsequent commits, pushes and publications require fresh explicit approval.
+
+- On 2026-11-04 the user requested a dedicated personal-meme section before the million-view clips. Use the supplied original X posts here; this supersedes the earlier rejection of the flirt post in a meme collage. Keep the rejected ashes image out.
+- Million-view heading: “Шучу на миллионы просмотров”. Second item is the actual supplied video, with controls and no autoplay. Threads heading: “Не X единым”; show the two supplied original posts and their 8.1k / 9.5k likes.
+- Final kitten must display only the top portion, without the bottom profanity. Keep second review neutral. Resume opens a real PDF; “Видео” points to the video on the page.
